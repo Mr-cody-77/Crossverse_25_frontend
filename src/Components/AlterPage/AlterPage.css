@@ -1,0 +1,53 @@
+.alter-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-color: #2c3e50; */
+    color: white;
+}
+
+.alter-content {
+    text-align: center;
+    padding: 40px;
+    background-color: rgba(187, 142, 142, 0.3);
+    border-radius: 10px;
+    max-width: 600px;
+}
+
+.alter-page h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #e74c3c;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.alter-page p {
+    font-size: 20px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.alter-retry-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 15px 30px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.alter-retry-button:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.alter-retry-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

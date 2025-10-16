@@ -1,0 +1,19 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: rgba(74, 144, 226, 0.1);
+  padding: 8px 15px;
+  border-radius: 8px;
+}
+
+.timer-icon {
+  font-size: 20px;
+}
+
+.timer-display {
+  font-family: monospace;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4a90e2;
+}

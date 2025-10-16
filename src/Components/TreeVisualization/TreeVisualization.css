@@ -1,0 +1,127 @@
+.tree-visualization {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 2rem;
+  align-items: center; /* Center content */
+}
+.tree-visualization-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; 
+}
+.tree-title {
+  background: linear-gradient(180deg, #ebe2e2 0%, #f68787 97%);
+  font-size: 2.8rem;
+  font-family:'Times New Roman', Times, serif;
+  color: #cb4f22;
+  margin-bottom: 0.5rem;
+  text-align: center; /* Center title */
+  border-radius: 10px;
+}
+
+.tree-description {
+  color: #cb4f22;
+  font-size: 2 rem;
+  margin-bottom: 1.5rem;
+  text-align: center; /* Center description */
+}
+
+.tree-svg-container {
+  flex: 1;
+  overflow: hidden;
+  width: 100%;
+  max-width: 800px;
+}
+
+.tree-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* D3 Tree Styles */
+.node circle {
+  fill: #e0e0e0;
+  stroke: #fff;
+  stroke-width: 2px;
+  transition: fill 0.3s ease-in-out;
+}
+
+.selected-node circle {
+  fill: #3498db;
+}
+
+.chest-node {
+  cursor: pointer;
+}
+
+.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+.selected-link {
+  stroke: #3498db;
+  stroke-width: 2.5px;
+}
+
+.node-label {
+  font-size: 12px;
+  fill: #555;
+  text-anchor: middle;
+}
+
+.selected-label {
+  font-weight: bold;
+  fill: #2c3e50;
+}
+
+/* Chest Image */
+.chest-image {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .tree-visualization {
+    padding: 1rem;
+    overflow: hidden;
+  }
+
+  .tree-svg-container {
+    width: 100%;
+    height: 60vh; /* Allows better visibility */
+    overflow-y: auto; /* Enables vertical scrolling */
+    display: flex;
+    align-items: flex-start; /* Keeps tree at the top */
+    justify-content: center;
+    position: relative;
+  }
+
+
+  .node circle {
+    r: 10; /* Larger nodes */
+  }
+
+  .node-label {
+    font-size: 10px;
+  }
+  .tree-visualization-container {
+    overflow-y: auto; /* Allow vertical scrolling */
+    overflow-x: hidden;
+    height: 100vh; /* Full height */
+    position: relative;
+  }
+
+  .tree-svg {
+    min-height: 800px; /* Ensure tree is always large */
+    width: 100%;
+  }
+
+}

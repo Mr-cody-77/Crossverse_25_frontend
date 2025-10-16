@@ -1,0 +1,128 @@
+/* General Styles */
+
+.rulespg{
+    background-color: linear-gradient(180deg, #0f20272d, #203a432b);
+    min-height: 100%;
+    min-height: 100vh;
+    display: flex;
+}
+.rules-container {
+    max-width: 800px;
+    margin: 50px auto 50px auto;
+    padding: 60px;
+    padding-top: 40px;
+    font-family: sans-serif;
+    background-color: #3e3c3c;
+    border-radius: 8px;
+  }
+  .rules-list{
+    margin-bottom: 50px;
+  }
+  .rules-highlight{
+    color: #E9331F;
+  }
+  .rules-highlight-bold{
+    font-weight: bold;
+    color: #1FC8E9;
+  }
+  .rules-para{
+    margin-bottom: 18px;
+  }
+  .rules-h1 {
+    text-align: center;
+    font-weight: bold;
+    color: #1FC8E9;
+    font-size: 2.6rem;
+    margin-bottom: 28px;
+  }
+  
+  .round {
+    margin-bottom: 30px;
+  }
+  
+  .rules-h2 {
+    color: #1FC8E9;
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  p{
+    color: #ffffff;
+    font-size: 1.1rem;
+  }
+  
+  ul {
+    color: white;
+    list-style-type: disc;
+    margin-left: 20px;
+    font-size: 1.1rem;
+  }
+  
+  .final-note {
+    color: #1FC8E9;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 40px;
+  }
+  .rules-btn{
+    display: block;
+    border-radius: 5px;
+    background-color: #1FC8E9;
+    color: #000000;
+    font-weight: bold;
+    margin: 0 auto;
+  }
+  
+  /* Media Queries for Responsiveness */
+  
+  /* Mobile view */
+  @media (max-width: 600px) {
+    .rules-container {
+      margin: 20px;
+      padding: 20px;
+      padding-top: 15px;
+    }
+  
+    .rules-h1 {
+      font-size: 2rem;
+    }
+  
+    .rules-h2 {
+      font-size: 1.6rem;
+    }
+    .rules-para{
+      font-size: 1rem;
+    }
+    .rules-list {
+      font-size: 1rem;
+    }
+  
+    .rules-final-note {
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Tablet view 
+  @media (max-width: 768px) {
+    .rules-container {
+      padding: 20px;
+    }
+  
+    .rules-h1 {
+      font-size: 2.2rem;
+    }
+  
+    .rules-h2 {
+      font-size: 1.7rem;
+    }
+  
+    ul {
+      font-size: 1.1rem;
+    }
+  
+    .final-note {
+      font-size: 1.2rem;
+    }
+  }
+  */

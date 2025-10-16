@@ -1,0 +1,119 @@
+/* Base styles for the navbar */
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap");
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  padding: 1rem 2rem;
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+/* Logo styling */
+.logo {
+  font-size: 1.8rem;
+  font-weight:500;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, color 0.3s;
+  color: #bd9999;
+  font-family: "Audiowide", sans-serif;
+}
+
+/* Navigation Links for Desktop */
+.nav-links {
+  display: flex;
+  list-style: none;
+  align-items: center;
+  transition: all 0.4s ease-in-out;
+}
+
+.nav-links li {
+  margin-left: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #bd9999;
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out, transform 0.3s ease;
+  font-family: "Orbitron", sans-serif;
+}
+
+.nav-links a:hover {
+  color: #af6b1cc1;
+  transform: translateY(-2px);
+}
+
+/* Hamburger Menu styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 35px;
+  height: 28px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.hamburger:hover {
+  transform: scale(1.1);
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: white;
+  border-radius: 2px;
+  transition: 0.4s;
+}
+
+/* Animation for hamburger icon */
+.rotate-top {
+  transform: rotate(45deg) translate(5px, 6px);
+}
+
+.rotate-bottom {
+  transform: rotate(-45deg) translate(5px, -6px);
+}
+
+.hide {
+  opacity: 0;
+}
+
+/* Mobile Styles */
+@media (max-width: 766px) {
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #000000, #1a1a1a);
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    /* Use max-height for smoother transition */
+    max-height: 0;
+    transition: max-height 0.4s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+  }
+
+  /* When menu is open, increase max-height to show items */
+  .nav-links.open {
+    max-height: 300px; /* Adjust if needed */
+  }
+
+  .nav-links li {
+    margin: 1rem 0;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+}

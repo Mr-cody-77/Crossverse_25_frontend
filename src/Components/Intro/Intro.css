@@ -1,0 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Audiowide&family=Orbitron:wght@400..900&display=swap");
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Orbitron", "Audiowide", sans-serif;
+  overflow-x: hidden;
+}
+
+.treasure-map {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #d9b38c;
+  background-image: url(./bg.jpg),
+    linear-gradient(rgba(217, 179, 140, 0.6), rgba(217, 179, 140, 0.6)),
+    url("data:image/svg+xml,%3Csvg width='42' height='44' viewBox='0 0 42 44' xmlns='http://www.w3.org/2000/svg'%3E%3Cg id='Page-1' fill='none' fill-rule='evenodd'%3E%3Cg id='brick-wall' fill='%238b4513' fill-opacity='0.1'%3E%3Cpath d='M0 0h42v44H0V0zm1 1h40v20H1V1zM0 23h20v20H0V23zm22 0h20v20H22V23z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Add map-like elements */
+.treasure-map::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(
+      circle at 75% 30%,
+      rgba(139, 69, 19, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 25% 70%,
+      rgba(139, 69, 19, 0.1) 0%,
+      transparent 50%
+    );
+  z-index: 1;
+}
+
+/* Content container */
+.content-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 2rem;
+  max-width: 70%;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  animation: float 6s ease-in-out infinite;
+  background: linear-gradient( 180deg #ffffff 0%, #ffffff 97%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(51, 106, 120, 0.3);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Typography - made heading larger and reduced spacing */
+.main-title {
+  font-family: "Audiowide", sans-serif;
+  font-size: 5.5rem;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+   background: linear-gradient(to left, #dfa1a1, #ee4444);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  margin-bottom: 0.2rem;
+  letter-spacing: 1.3px;
+  line-height: 1.1;
+  font-weight: 400;
+}
+
+
+
+
+.sub-title {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.8rem;
+  color: #edd7ea;
+  margin-bottom: 2rem;
+}
+/* button styles */
+
+.adventure-button {
+  position: relative;
+  overflow: hidden;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-family: "Orbitron", sans-serif;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(to right, #12121252, #5bacc190);
+  transition: color 0.3s ease;
+}
+
+.adventure-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to left, #504e4e52, #c81a1a90);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.adventure-button:hover::before {
+  opacity: 1;
+}
+
+.adventure-button span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Map route - new element */
+.map-route {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      90deg,
+      transparent 49.5%,
+      rgba(139, 69, 19, 0.2) 49.5%,
+      rgba(139, 69, 19, 0.2) 50.5%,
+      transparent 50.5%
+    ),
+    linear-gradient(
+      0deg,
+      transparent 49.5%,
+      rgba(139, 69, 19, 0.2) 49.5%,
+      rgba(139, 69, 19, 0.2) 50.5%,
+      transparent 50.5%
+    );
+  background-size: 10% 10%;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+/* Animated background elements */
+/* .ocean-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 15vh;
+  background: linear-gradient(to bottom, transparent, rgba(30, 129, 176, 0.5));
+  opacity: 0.7;
+  animation: wave 15s linear infinite;
+  z-index: 1;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ship {
+  position: absolute;
+  width: 60px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 17h18c-.175-1.4-.63-2.52-1.425-3.4-.46-.51-1.05-.94-1.75-1.275.35-.34.625-.741.825-1.2.2-.459.35-.959.35-1.425 0-1.105-.455-2.1-1.2-2.8-.744-.7-1.795-1.1-2.9-1.1s-2.156.4-2.9 1.1c-.744.7-1.2 1.695-1.2 2.8 0 .466.15.966.35 1.425.2.459.475.86.825 1.2-.7.335-1.29.765-1.75 1.275C11.63 14.48 11.175 15.6 11 17H3z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2;
+}
+
+.ship-1 {
+  top: 20%;
+  left: 10%;
+  animation: shipMove1 30s linear infinite;
+}
+
+.ship-2 {
+  top: 70%;
+  right: 15%;
+  animation: shipMove2 25s linear infinite;
+}
+
+@keyframes shipMove1 {
+  0% {
+    transform: translateX(0) rotate(5deg);
+  }
+  50% {
+    transform: translateX(50vw) rotate(-5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(5deg);
+  }
+}
+
+@keyframes shipMove2 {
+  0% {
+    transform: translateX(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateX(-30vw) rotate(5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(-5deg);
+  }
+}
+
+.compass {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  width: 50px;
+  height: 50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolygon points='16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation: rotate 20s linear infinite;
+  z-index: 2;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.x-mark {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23cc0000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='18' y1='6' x2='6' y2='18'/%3E%3Cline x1='6' y1='6' x2='18' y2='18'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2;
+}
+
+.x-mark-1 {
+  bottom: 30%;
+  left: 20%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.x-mark-2 {
+  top: 40%;
+  right: 25%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.x-mark-3 {
+  top: 65%;
+  left: 35%;
+  animation: pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+.palm-tree {
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23006400' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 2v20M12 2c0 0-3-1-3 2c0 1.5 3 1 3 4c0 2-3 0-3 3.5c0 2 3 1 3 4'/%3E%3Cpath d='M12 2c0 0 3-1 3 2c0 1.5-3 1-3 4c0 2 3 0 3 3.5c0 2-3 1-3 4'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 2;
+}
+
+.palm-tree-1 {
+  bottom: 10%;
+  left: 5%;
+  animation: sway 8s ease-in-out infinite;
+}
+
+.palm-tree-2 {
+  bottom: 15%;
+  right: 8%;
+  animation: sway 10s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+} */
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 4rem;
+  }
+
+  .sub-title {
+    font-size: 1.5rem;
+  }
+
+  .adventure-button {
+    padding: 0.8rem 1.6rem;
+    font-size: 1rem;
+  }
+  /* 
+  .ship,
+  .compass {
+    transform: scale(0.8);
+  }
+} */
+
+  @media (max-width: 480px) {
+    .main-title {
+      font-size: 3rem;
+    }
+
+    .sub-title {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .adventure-button {
+      padding: 0.7rem 1.4rem;
+      font-size: 0.9rem;
+    }
+
+    .content-container {
+      padding: 1.5rem;
+    }
+    /* 
+  .ship,
+  .compass,
+  .x-mark,
+  .palm-tree {
+    transform: scale(0.7); */
+  }
+}
