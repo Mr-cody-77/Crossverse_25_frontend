@@ -1,128 +1,215 @@
-/* General Styles */
+/* Import fonts */
 
-.rulespg{
-    background-color: linear-gradient(180deg, #0f20272d, #203a432b);
-    min-height: 100%;
-    min-height: 100vh;
-    display: flex;
+/* Page Background */
+.rulespg {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #0a0a0a 0%, #000000 100%);
 }
+
+/* Animated background beams */
+
+/*.rulespg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%) 0 0,
+              linear-gradient(245deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%) 0 0,
+              linear-gradient(115deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%) 0 0,
+              linear-gradient(245deg, rgba(0, 255, 255, 0.05) 25%, transparent 25%) 0 0;
+  background-size: 200px 200px;
+  animation: laserFlow 6s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.7;
+}*/
+
+.rulespg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%) 0 0,
+              linear-gradient(245deg, rgba(0, 255, 255, 0.1) 25%, transparent 25%) 0 0;
+  background-size: 200px 200px;
+  animation: laserFlow 6s linear infinite;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.rulespg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 200, 255, 0.1) 0%,
+    rgba(0, 255, 200, 0.2) 25%,
+    rgba(0, 150, 255, 0.15) 50%,
+    rgba(0, 255, 255, 0.1) 75%,
+    transparent 100%
+  );
+  background-size: 300% 300%;
+  animation: beamShift 10s ease-in-out infinite;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+@keyframes laserFlow {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 400px 400px, -400px -400px;
+  }
+}
+
+@keyframes beamShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+
+/* Container */
 .rules-container {
-    max-width: 800px;
-    margin: 50px auto 50px auto;
-    padding: 60px;
-    padding-top: 40px;
-    font-family: sans-serif;
-    background-color: #3e3c3c;
-    border-radius: 8px;
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 60px 40px;
+  font-family: 'Orbitron', sans-serif;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(31, 200, 233, 0.4);
+ /* backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);*/
+}
+
+/* Headings */
+.rules-h1 {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #1FC8E9;
+  font-size: 3rem;
+  margin-bottom: 28px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    text-shadow: 0 0 8px #1FC8E9, 0 0 16px #1FC8E9, 0 0 24px #1FC8E9;
   }
-  .rules-list{
-    margin-bottom: 50px;
+  50% {
+    text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff, 0 0 60px #00eaff;
   }
-  .rules-highlight{
-    color: #E9331F;
+}
+
+/* Subheadings */
+.rules-h2 {
+  color: #1FC8E9;
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  font-family: 'Audiowide', sans-serif;
+}
+
+/* Text Styles */
+p {
+  color: #ffffff;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.rules-highlight {
+  color: #E9331F;
+}
+
+.rules-highlight-bold {
+  font-weight: bold;
+  color: #1FC8E9;
+}
+
+/* List */
+.rules-list {
+  margin-bottom: 50px;
+}
+
+ul {
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  list-style-type: disc;
+  margin-left: 20px;
+  font-size: 1.1rem;
+}
+
+/* Button */
+.rules-btn {
+  display: block;
+  border-radius: 6px;
+  background-color: #1FC8E9;
+  color: #000000;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rules-btn:hover {
+  background-color: #00eaff;
+  box-shadow: 0 0 15px #1FC8E9, 0 0 30px #1FC8E9;
+}
+
+/* Final Note */
+.final-note {
+  color: #1FC8E9;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .rules-container {
+    margin: 20px;
+    padding: 20px;
   }
-  .rules-highlight-bold{
-    font-weight: bold;
-    color: #1FC8E9;
-  }
-  .rules-para{
-    margin-bottom: 18px;
-  }
+
   .rules-h1 {
-    text-align: center;
-    font-weight: bold;
-    color: #1FC8E9;
-    font-size: 2.6rem;
-    margin-bottom: 28px;
+    font-size: 2.2rem;
   }
-  
-  .round {
-    margin-bottom: 30px;
-  }
-  
+
   .rules-h2 {
-    color: #1FC8E9;
-    font-size: 1.8rem;
-    margin-bottom: 16px;
+    font-size: 1.5rem;
   }
-  p{
-    color: #ffffff;
-    font-size: 1.1rem;
+
+  p, ul {
+    font-size: 1rem;
   }
-  
-  ul {
-    color: white;
-    list-style-type: disc;
-    margin-left: 20px;
-    font-size: 1.1rem;
-  }
-  
-  .final-note {
-    color: #1FC8E9;
-    font-weight: bold;
-    font-size: 1.5em;
-    text-align: center;
-    margin-top: 30px;
-    margin-bottom: 40px;
-  }
-  .rules-btn{
-    display: block;
-    border-radius: 5px;
-    background-color: #1FC8E9;
-    color: #000000;
-    font-weight: bold;
-    margin: 0 auto;
-  }
-  
-  /* Media Queries for Responsiveness */
-  
-  /* Mobile view */
-  @media (max-width: 600px) {
-    .rules-container {
-      margin: 20px;
-      padding: 20px;
-      padding-top: 15px;
-    }
-  
-    .rules-h1 {
-      font-size: 2rem;
-    }
-  
-    .rules-h2 {
-      font-size: 1.6rem;
-    }
-    .rules-para{
-      font-size: 1rem;
-    }
-    .rules-list {
-      font-size: 1rem;
-    }
-  
-    .rules-final-note {
-      font-size: 1.1rem;
-    }
-  }
-  
-  /* Tablet view 
-  @media (max-width: 768px) {
-    .rules-container {
-      padding: 20px;
-    }
-  
-    .rules-h1 {
-      font-size: 2.2rem;
-    }
-  
-    .rules-h2 {
-      font-size: 1.7rem;
-    }
-  
-    ul {
-      font-size: 1.1rem;
-    }
-  
-    .final-note {
-      font-size: 1.2rem;
-    }
-  }
-  */
+}
+
+.rulespg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(31, 200, 233, 0.15), transparent 70%);
+  animation: pulseGlow 6s ease-in-out infinite;
+  z-index: 1;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}

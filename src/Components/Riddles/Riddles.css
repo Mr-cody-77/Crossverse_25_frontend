@@ -1,0 +1,9 @@
+.riddle-text {
+  font-size: clamp(0.6rem, 1.2vw, 1rem); /* Auto scales text based on screen width */
+  line-height: 1.4;
+  word-break: break-word;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+  max-height: 85%; /* Prevent overflow */
+  overflow-y: auto;
+  
+ }

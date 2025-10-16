@@ -143,19 +143,19 @@ setCellNumbers(numbers);
   const moveToNextCell = (row, col) => {
     // Try to move right
     if (
-      col + 1 < crosswordData.grid[0].length &&
-      crosswordData.grid[row][col + 1] !== ""
+      row + 1 < crosswordData.grid[0].length &&
+      crosswordData.grid[row + 1][col] !== ""
     ) {
-      setSelectedCell({ row, col: col + 1 });
+      setSelectedCell({ row: row + 1, col });
       return;
     }
 
     // Try to move down
     if (
-      row + 1 < crosswordData.grid.length &&
-      crosswordData.grid[row + 1][col] !== ""
+      col + 1 < crosswordData.grid[0].length &&
+      crosswordData.grid[row][col + 1] !== ""
     ) {
-      setSelectedCell({ row: row + 1, col });
+      setSelectedCell({ row, col: col + 1 });
       return;
     }
 
