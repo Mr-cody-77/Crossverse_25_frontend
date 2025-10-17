@@ -39,12 +39,26 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
     setQuestions(shuffledQuestions);
   }, []);
 
+
   // Store score and start time in localStorage
   useEffect(() => {
     localStorage.setItem("user_score", score);
     localStorage.setItem("start_time", startTime);
   }, [score, startTime]);
+  // useEffect(() => {
+  //   console.log("🎯 Current Score:", score);
+  // }, [score]);
 
+  useEffect(() => {
+  const storedScore = Number(localStorage.getItem("user_score")) || 0;
+  const alreadySubmitted = localStorage.getItem("submitted") === "true";
+
+  if (storedScore >= 10 && !alreadySubmitted) {
+    localStorage.setItem("submitted", "true");
+    alert("You have collected all the keys. Now you can proceed to the next round.");
+    updatePlayerCompletion(storedScore);
+  }
+}, []);
   // Fetch player status from backend
   useEffect(() => {
     const fetchPlayerStatus = async () => {
@@ -167,10 +181,10 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
       setScore((prev) => {
         const newScore = prev + 1;
 
-        if (newScore === 10 && localStorage.getItem("submitted") !== "true") {
+        if (newScore >= 10 && localStorage.getItem("submitted") !== "true") {
           localStorage.setItem("submitted", "true");
           alert("You have collected all the keys. Now you can proceed to the next round.");
-          updatePlayerCompletion(10);
+          updatePlayerCompletion(newScore);
         }
 
         return newScore;
