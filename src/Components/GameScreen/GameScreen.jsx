@@ -99,6 +99,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
   const updatePlayerCompletion = async (finalScore) => {
     try {
       setLoading(true);
+      localStorage.setItem("isDone", "true");
       const response = await fetch(`${backend_url}/api/player/`);
       const players = await response.json();
       const player = players.find((p) => p.name === player_name);
@@ -116,7 +117,6 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
         body: JSON.stringify({ name: player_name, is_complete: true, score: finalScore }),
       });
 
-      localStorage.setItem("isDone", "true");
       navigate("/riddles");
     } catch (error) {
       console.error("Error updating player status:", error);
