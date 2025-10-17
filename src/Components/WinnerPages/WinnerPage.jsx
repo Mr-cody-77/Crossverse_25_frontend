@@ -62,14 +62,14 @@ function WinnerPage() {
                 setMessage(`Hurray! ${winner_name}, you won!`);
               })
               .catch((error) => {
-                console.error("Error saving winner:", error);
-                setMessage("Error saving winner. Try again!");
+                console.error("Congrates You Completed the Game!");
+                setMessage("Congrates You Completed the Game!");
               });
           }
         })
         .catch((error) => {
-          console.error("Error checking winner status:", error);
-          setMessage("Error checking winner status. Try again!");
+          console.error("Congrates You Completed the Game!");
+          setMessage("Congrates You Completed the Game!");
         });
     } else {
       setMessage("Incorrect passcode. Try again!");
