@@ -45,9 +45,9 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
     localStorage.setItem("user_score", score);
     localStorage.setItem("start_time", startTime);
   }, [score, startTime]);
-  // useEffect(() => {
-  //   console.log("🎯 Current Score:", score);
-  // }, [score]);
+  useEffect(() => {
+    console.log("🎯 Current Score:", score);
+  }, [score]);
 
   useEffect(() => {
   const storedScore = Number(localStorage.getItem("user_score")) || 0;
