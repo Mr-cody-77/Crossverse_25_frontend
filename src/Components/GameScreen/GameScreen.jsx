@@ -123,6 +123,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
       alert("Something went wrong saving your progress.");
     } finally {
       setLoading(false);
+      navigate("/riddles");
     }
   };
 
