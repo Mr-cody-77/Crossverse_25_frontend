@@ -39,26 +39,27 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
     setQuestions(shuffledQuestions);
   }, []);
 
-
   // Store score and start time in localStorage
   useEffect(() => {
     localStorage.setItem("user_score", score);
     localStorage.setItem("start_time", startTime);
   }, [score, startTime]);
-  useEffect(() => {
-    console.log("🎯 Current Score:", score);
-  }, [score]);
+
+  // useEffect(() => {
+  //   console.log("🎯 Current Score:", score);
+  // }, [score]);
 
   useEffect(() => {
-  const storedScore = Number(localStorage.getItem("user_score")) || 0;
-  const alreadySubmitted = localStorage.getItem("submitted") === "true";
+    const storedScore = Number(localStorage.getItem("user_score")) || 0;
+    const alreadySubmitted = localStorage.getItem("submitted") === "true";
 
-  if (storedScore >= 10 && !alreadySubmitted) {
-    localStorage.setItem("submitted", "true");
-    alert("You have collected all the keys. Now you can proceed to the next round.");
-    updatePlayerCompletion(storedScore);
-  }
-}, []);
+    if (storedScore >= 10 && !alreadySubmitted) {
+      localStorage.setItem("submitted", "true");
+      alert("You have collected all the keys. Now you can proceed to the next round.");
+      updatePlayerCompletion(storedScore);
+    }
+  }, []);
+
   // Fetch player status from backend
   useEffect(() => {
     const fetchPlayerStatus = async () => {
@@ -100,6 +101,8 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
     try {
       setLoading(true);
       localStorage.setItem("isDone", "true");
+      setIsDone(true);
+
       const response = await fetch(`${backend_url}/api/player/`);
       const players = await response.json();
       const player = players.find((p) => p.name === player_name);
@@ -130,7 +133,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
   // 🧠 Handle option selection with loading
   const handleAnswerSelected = async (optionIndex) => {
     if (questions.length === 0) return;
-    setLoading(true); // 👈 show loading immediately
+    setLoading(true);
 
     const currentQuestion = questions[currentQuestionIndex];
     const isCorrect = optionIndex + 1 === Number(currentQuestion.correctAnswer);
@@ -181,18 +184,16 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
     if (isCorrect) {
       setScore((prev) => {
         const newScore = prev + 1;
-
         if (newScore >= 10 && localStorage.getItem("submitted") !== "true") {
           localStorage.setItem("submitted", "true");
           alert("You have collected all the keys. Now you can proceed to the next round.");
           updatePlayerCompletion(newScore);
         }
-
         return newScore;
       });
     }
 
-    // ⏳ Add slight delay so overlay is visible before next question
+    // ⏳ Delay so overlay is visible before next question
     setTimeout(() => {
       if (isFinalQuestion) {
         setGameCompleted(true);
@@ -200,7 +201,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
       } else {
         setCurrentQuestionIndex((prev) => prev + 1);
       }
-      setLoading(false); // hide after updating state
+      setLoading(false);
     }, 600);
   };
 
@@ -216,7 +217,9 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
         <div className="game-header">
           <h1 className="Round-1h1">Round-1</h1>
           <div className="progress-indicator">
-            <span>Questions: {currentQuestionIndex + 1}/{questions.length}</span>
+            <span>
+              Questions: {currentQuestionIndex + 1}/{questions.length}
+            </span>
           </div>
         </div>
 
@@ -238,7 +241,7 @@ function GameScreen({ onRiddleCollected, onElimination, riddlesCollected, setIsD
         </div>
       </div>
 
-      {loading && <LoadingOverlay />} 
+      {loading && <LoadingOverlay />}
     </div>
   );
 }
